@@ -37,12 +37,8 @@
 - Установить расширение на Chrome — **[Scripty](https://chrome.google.com/webstore/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam)**;
 - Автоматическая установка: **[Установить скрипт](https://scripty.abhisheksatre.com/#/share/script_1660218737940)**;
 - Ручная установка: **[Смотреть видеоинструкцию](https://disk.yandex.ru/i/cXntE-vICcOB-Q)**:
-  - Добавить в скрипт id вашего резюме;
-  - Изменить шаблон сопроводительного письма. 
-
-AutoSend Letters HeadHunter
-
-Можете изменить шаблон сопроводительного письма или оставить по умолчанию
+  - По желанию изменить шаблон сопроводительного письма;
+  - Добавить в скрипт id вашего резюме.
 
 ## Языки:
 - JavaScript
