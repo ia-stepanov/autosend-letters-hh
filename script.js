@@ -8,13 +8,21 @@ async function init() {
   var vacancy = document.querySelector('[data-qa="vacancy-response-link-top"]');
   var i = 0;
 
-  // Функция для автоматической отправки Сопроводительного письма
-  function handlerCoverLetter() {
-    var resume = document.querySelector(
-      '#resume_ID_РЕЗЮМЕ'
-    );
+  // Функция для автоматического выбора резюме
+  function selectResume() {
+    var resume = document.querySelector('#resume_ID_РЕЗЮМЕ');
     var message = document.querySelector('[data-qa="vacancy-response-letter-toggle"]');
 
+    if (!message) {
+      resume.click();
+    } else {
+      resume.click();
+      message.click();
+    }
+  }
+
+  // Функция для автоматической отправки Сопроводительного письма
+  function handlerCoverLetter() {
     // Шаблон Сопроводительного письма
     var vacancyTitle = document.querySelector(
       '.bloko-modal-header_outlined > div'
@@ -31,13 +39,6 @@ async function init() {
 
 Контактные данные прилагаю.`,
     };
-
-    if (!message) {
-      resume.click();
-    } else {
-      resume.click();
-      message.click();
-    }
 
     var messageArea = document.querySelector(
       '[data-qa="vacancy-response-popup-form-letter-input"]'
@@ -60,6 +61,9 @@ async function init() {
     vacancy.click();
 
     await delay(1000);
+    selectResume();
+
+    await delay(500);
     handlerCoverLetter();
   }
   // Иначе вызвать функцию на странице со списком вакансий
@@ -68,6 +72,9 @@ async function init() {
       vacancies[i].click();
 
       await delay(1000);
+      selectResume();
+
+      await delay(500);
       handlerCoverLetter();
       i++;
 
