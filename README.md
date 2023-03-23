@@ -52,5 +52,4 @@
 ## Ссылка на проект:
 https://github.com/ia-stepanov/autosend-letters-hh
 
-## Поддержать проект:
-https://boosty.to/ia-stepanov/single-payment/donation/364228
+⏵ **[Поддержать проект на Boosty](https://boosty.to/ia-stepanov/single-payment/donation/364228)** 🙌
