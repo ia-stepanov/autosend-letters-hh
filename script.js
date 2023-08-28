@@ -45,6 +45,7 @@ const COVER_LETTER_TEMPLATE = (vacancyName) => `Добрый день!
     `
   }
 })()
+
 async function init() {
   var vacancies = document.querySelectorAll(
     '[data-qa="vacancy-serp__vacancy_response"]'
@@ -81,47 +82,47 @@ async function init() {
       await delay(1000)
     }
   }
+}
 
-  // Функция для автоматического выбора резюме
-  function selectResume() {
-    var resume = document.querySelector(RESUME_ID_ATTRIBUTE)
-    var message = document.querySelector(
-      '[data-qa="vacancy-response-letter-toggle"]'
-    )
+// Функция для автоматического выбора резюме
+function selectResume() {
+  var resume = document.querySelector(RESUME_ID_ATTRIBUTE)
+  var message = document.querySelector(
+    '[data-qa="vacancy-response-letter-toggle"]'
+  )
 
-    if (!message) {
-      resume.click()
-    } else {
-      resume.click()
-      message.click()
-    }
+  if (!message) {
+    resume.click()
+  } else {
+    resume.click()
+    message.click()
   }
+}
 
-  // Функция для автоматической отправки Сопроводительного письма
-  function handlerCoverLetter() {
-    // Шаблон Сопроводительного письма
-    var vacancyTitle = document.querySelector(
-      '.bloko-modal-header_outlined > div'
-    ).textContent
-    var vacancyName = vacancyTitle.slice(1, vacancyTitle.length - 1)
+// Функция для автоматической отправки Сопроводительного письма
+function handlerCoverLetter() {
+  // Шаблон Сопроводительного письма
+  var vacancyTitle = document.querySelector(
+    '.bloko-modal-header_outlined > div'
+  ).textContent
+  var vacancyName = vacancyTitle.slice(1, vacancyTitle.length - 1)
 
-    var messageArea = document.querySelector(
-      '[data-qa="vacancy-response-popup-form-letter-input"]'
-    )
-    messageArea.value = ''
-    messageArea.value = COVER_LETTER_TEMPLATE(vacancyName)
+  var messageArea = document.querySelector(
+    '[data-qa="vacancy-response-popup-form-letter-input"]'
+  )
+  messageArea.value = ''
+  messageArea.value = COVER_LETTER_TEMPLATE(vacancyName)
 
-    // Добавить изменения в поле текста
-    var evt = document.createEvent('HTMLEvents')
-    evt.initEvent('change', true, true)
-    messageArea.dispatchEvent(evt)
+  // Добавить изменения в поле текста
+  var evt = document.createEvent('HTMLEvents')
+  evt.initEvent('change', true, true)
+  messageArea.dispatchEvent(evt)
 
-    // Отправить отклик
-    var btnSubmit = document.querySelector(
-      '[data-qa="vacancy-response-submit-popup"]'
-    )
-    btnSubmit.click()
-  }
+  // Отправить отклик
+  var btnSubmit = document.querySelector(
+    '[data-qa="vacancy-response-submit-popup"]'
+  )
+  btnSubmit.click()
 }
 
 function hasRelocationTitleWarning() {
