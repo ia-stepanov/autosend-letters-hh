@@ -68,6 +68,10 @@ async function init() {
       vacancies[i].click()
 
       await delay(1000)
+      // Если есть сообщение об релокации, подтверждаем его
+      hasRelocationTitleWarning() && confirmClickRelocation()
+
+      await delay(1000)
       selectResume()
 
       await delay(500)
@@ -118,6 +122,18 @@ async function init() {
     )
     btnSubmit.click()
   }
+}
+
+function hasRelocationTitleWarning() {
+  return !!document.querySelector('[data-qa="relocation-warning-title"]')
+}
+
+function confirmClickRelocation() {
+  const btnSubmit = document.querySelector(
+    '[data-qa="relocation-warning-confirm"]'
+  )
+
+  btnSubmit.click()
 }
 
 function delay(ms) {
