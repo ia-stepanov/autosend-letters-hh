@@ -1,4 +1,8 @@
-const RESUME_ID_ATTRIBUTE = '#resume_Вашь ID РЕЗЮМЕ'
+//↓↓↓ ВАШЕ РЕЗЮМЕ ID (БЕЗ ЭТОГО КОД НЕ БУДЕТ РАБОТАТЬ!!!) ↓↓↓
+
+const RESUME_ID_ATTRIBUTE = '#ВАШЬ РЕЗЮМЕ ID' // Пример: #resume_0c74c60fff0b6bd3c90039ed1f6f7669436378
+
+//↑↑↑ ВАШЕ РЕЗЮМЕ ID (БЕЗ ЭТОГО КОД НЕ БУДЕТ РАБОТАТЬ!!!) ↑↑↑
 
 const COVER_LETTER_TEMPLATE = (vacancyName) => `Добрый день! 
 
