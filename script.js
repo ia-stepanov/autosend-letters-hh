@@ -14,9 +14,31 @@ const COVER_LETTER_TEMPLATE = (vacancyName) => `Добрый день!
 
 Контактные данные прилагаю.`
 
-// Добавить на панель доп. функционал
-;(async function addNavLinks() {
-  await delay(1000)
+const DELAY_500 = 500
+const DELAY_1000 = 1000
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+const createElement = (item, attribute, title) => {
+  item.classList.add(
+    'supernova-navi-item',
+    'supernova-navi-item_lvl-2',
+    'supernova-navi-item_no-mobile'
+  )
+
+  item.innerHTML = `
+    <a
+      data-qa="mainmenu_vacancyResponses"
+      class="supernova-link"
+      ${attribute}
+    >
+      ${title}
+    </a>
+    <div class="supernova-navi-underline">${title}</div>
+  `
+}
+
+const addNavLinks = async () => {
+  await delay(DELAY_1000)
 
   const navLinks = document.querySelectorAll(
     '.supernova-navi-item.supernova-navi-item_lvl-2.supernova-navi-item_no-mobile'
@@ -26,121 +48,80 @@ const COVER_LETTER_TEMPLATE = (vacancyName) => `Добрый день!
 
   createElement(itemLetters, 'handler-letters', 'Отправить отклики')
 
-  //Добавляем кнопку "Отправить отклики" в header
   navLinks[2].append(itemLetters)
   document.querySelector('[handler-letters]').addEventListener('click', init)
-
-  function createElement(item, attribute, title) {
-    item.classList.add(
-      'supernova-navi-item',
-      'supernova-navi-item_lvl-2',
-      'supernova-navi-item_no-mobile'
-    )
-
-    item.innerHTML = `
-    <a
-      data-qa="mainmenu_vacancyResponses"
-      class="supernova-link"
-      ${attribute}
-    >
-      ${title}
-    </a>
-    <div class="supernova-navi-underline">${title}</div>
-    `
-  }
-})()
-
-async function init() {
-  var vacancies = document.querySelectorAll(
-    '[data-qa="vacancy-serp__vacancy_response"]'
-  )
-  var vacancy = document.querySelector('[data-qa="vacancy-response-link-top"]')
-
-  // Вызвать функцию на странице с вакансией
-  if (vacancy) {
-    vacancy.click()
-
-    await delay(1000)
-    selectResume()
-
-    await delay(500)
-    handlerCoverLetter()
-  }
-  // Иначе вызвать функцию на странице со списком вакансий
-  else {
-    var i = 0
-    while (i <= vacancies.length) {
-      vacancies[i].click()
-
-      await delay(1000)
-      // Если есть сообщение об релокации, подтверждаем его
-      hasRelocationTitleWarning() && confirmClickRelocation()
-
-      await delay(1000)
-      selectResume()
-
-      await delay(500)
-      handlerCoverLetter()
-      i++
-
-      await delay(1000)
-    }
-  }
 }
 
-// Функция для автоматического выбора резюме
-function selectResume() {
-  var resume = document.querySelector(RESUME_ID_ATTRIBUTE)
-  var message = document.querySelector(
+const selectResume = () => {
+  const resume = document.querySelector(RESUME_ID_ATTRIBUTE)
+  const message = document.querySelector(
     '[data-qa="vacancy-response-letter-toggle"]'
   )
 
-  if (!message) {
-    resume.click()
-  } else {
-    resume.click()
+  resume.click()
+  if (message) {
     message.click()
   }
 }
 
-// Функция для автоматической отправки Сопроводительного письма
-function handlerCoverLetter() {
-  // Шаблон Сопроводительного письма
-  var vacancyTitle = document.querySelector(
+const handlerCoverLetter = () => {
+  const vacancyTitle = document.querySelector(
     '.bloko-modal-header_outlined > div'
   ).textContent
-  var vacancyName = vacancyTitle.slice(1, vacancyTitle.length - 1)
+  const vacancyName = vacancyTitle.slice(1, vacancyTitle.length - 1)
 
-  var messageArea = document.querySelector(
+  const messageArea = document.querySelector(
     '[data-qa="vacancy-response-popup-form-letter-input"]'
   )
-  messageArea.value = ''
   messageArea.value = COVER_LETTER_TEMPLATE(vacancyName)
 
-  // Добавить изменения в поле текста
-  var evt = document.createEvent('HTMLEvents')
-  evt.initEvent('change', true, true)
+  const evt = new Event('change')
   messageArea.dispatchEvent(evt)
 
-  // Отправить отклик
-  var btnSubmit = document.querySelector(
+  const btnSubmit = document.querySelector(
     '[data-qa="vacancy-response-submit-popup"]'
   )
   btnSubmit.click()
 }
 
-function hasRelocationTitleWarning() {
-  return !!document.querySelector('[data-qa="relocation-warning-title"]')
-}
+const hasRelocationTitleWarning = () =>
+  !!document.querySelector('[data-qa="relocation-warning-title"]')
 
-function confirmClickRelocation() {
+const confirmClickRelocation = () => {
   const btnSubmit = document.querySelector(
     '[data-qa="relocation-warning-confirm"]'
   )
-
   btnSubmit.click()
 }
 
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+const init = async () => {
+  const vacancies = document.querySelectorAll(
+    '[data-qa="vacancy-serp__vacancy_response"]'
+  )
+  const vacancy = document.querySelector(
+    '[data-qa="vacancy-response-link-top"]'
+  )
+
+  if (vacancy) {
+    vacancy.click()
+    await delay(DELAY_1000)
+    selectResume()
+    await delay(DELAY_500)
+    handlerCoverLetter()
+  } else {
+    for (let i = 0; i < vacancies.length; i++) {
+      vacancies[i].click()
+      await delay(DELAY_1000)
+      if (hasRelocationTitleWarning()) {
+        confirmClickRelocation()
+      }
+      await delay(DELAY_1000)
+      selectResume()
+      await delay(DELAY_500)
+      handlerCoverLetter()
+      await delay(DELAY_1000)
+    }
+  }
 }
+
+addNavLinks()
