@@ -41,7 +41,7 @@ const addNavLinks = async () => {
   await delay(DELAY_1000)
 
   const navLinks = document.querySelectorAll(
-    '.supernova-navi-item.supernova-navi-item_lvl-2.supernova-navi-item_no-mobile'
+    '.supernova-navi-item.supernova-navi-item_lvl-2'
   )
 
   const itemLetters = document.createElement('div')
