@@ -6,6 +6,7 @@ function delay(ms) {
 async function init() {
   var vacancies = document.querySelectorAll('[data-qa="vacancy-serp__vacancy_response"]');
   var vacancy = document.querySelector('[data-qa="vacancy-response-link-top"]');
+
   var i = 0;
 
   // Функция для автоматического выбора резюме
@@ -27,13 +28,15 @@ async function init() {
     var vacancyTitle = document.querySelector(
       '.bloko-modal-header_outlined > div'
     ).textContent;
+
     var vacancyName = vacancyTitle.slice(1, vacancyTitle.length - 1);
+
     var messagesData = {
       frontend: `Добрый день! 
 
 Меня заинтересовала предложенная Вами вакансия ${vacancyName}. Ознакомившись с перечнем требований к кандидатам, пришел к выводу, что мой опыт работы позволяют мне претендовать на данную должность. 
 
-Обладаю высоким уровнем фронтенд-разработки, свободно говорю по-английски. В работе ответствен, пунктуален и коммуникабелен.
+Обладаю высоким уровнем профессиональных качеств, свободно говорю по-английски. В работе ответствен, пунктуален и коммуникабелен.
 
 Буду с нетерпением ждать ответа и возможности обсудить условия работы и взаимные ожидания на собеседовании. Спасибо, что уделили время. 
 
@@ -43,7 +46,6 @@ async function init() {
     var messageArea = document.querySelector(
       '[data-qa="vacancy-response-popup-form-letter-input"]'
     );
-    messageArea.value = '';
     messageArea.value = messagesData.frontend;
 
     // Добавить изменения в поле текста
@@ -68,7 +70,7 @@ async function init() {
   }
   // Иначе вызвать функцию на странице со списком вакансий
   else {
-    while (i <= vacancies.length) {
+    while (i < vacancies.length) {
       vacancies[i].click();
 
       await delay(1000);
@@ -76,7 +78,8 @@ async function init() {
 
       await delay(500);
       handlerCoverLetter();
-      i++;
+      //появилась призрачная нода, пропускаем ее
+      i = i + 2;
 
       await delay(1000);
     }
@@ -88,7 +91,7 @@ async function init() {
   await delay(1000);
 
   const navLinks = document.querySelectorAll(
-    '.supernova-navi-item.supernova-navi-item_lvl-2.supernova-navi-item_no-mobile'
+    '[data-sentry-source-file="SupernovaNaviItem.tsx"]'
   );
 
   const itemLetters = document.createElement('div');
@@ -114,6 +117,7 @@ async function init() {
 
   createElement(itemLetters, 'handler-letters', 'Отправить отклики');
 
-  navLinks[2].append(itemLetters);
+  //поменялись элементы в меню навигации
+  navLinks[4].append(itemLetters);
   document.querySelector('[handler-letters]').addEventListener('click', init);
 })();
