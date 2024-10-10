@@ -11,7 +11,9 @@ async function init() {
 
   // Функция для автоматического выбора резюме
   function selectResume() {
+    // в эту строку нужно вставлять id резюме целиком, должно получится что-то по типу: var resume = document.querySelector('#resume_750ec895ff0dd641cb0039ed1f6a3971356146');
     var resume = document.querySelector('#resume_ID_РЕЗЮМЕ');
+    
     var message = document.querySelector('[data-qa="vacancy-response-letter-toggle"]');
 
     if (!message) {
@@ -62,7 +64,8 @@ async function init() {
   if (vacancy) {
     vacancy.click();
 
-    await delay(1000);
+    // если форма с выбором резюме для отклика после нажатия на кнопку "откликнуться" слишком долго открывается, то увеличьте время с 2000 на большее число
+    await delay(2000);
     selectResume();
 
     await delay(500);
@@ -73,7 +76,8 @@ async function init() {
     while (i < vacancies.length) {
       vacancies[i].click();
 
-      await delay(1000);
+      // если форма с выбором резюме для отклика после нажатия на кнопку "откликнуться" слишком долго открывается, то увеличьте время с 2000 на большее число
+      await delay(2000);
       selectResume();
 
       await delay(500);
