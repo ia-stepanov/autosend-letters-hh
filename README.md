@@ -87,10 +87,10 @@ src/
 
 ### Для пользователей
 
-4. **Установите расширение для Chrome** — [Scripty](https://chrome.google.com/webstore/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam).
-5. **Автоматическая установка скрипта**: [Установить скрипт](https://scripty.abhisheksatre.com/#/share/script_m80jffs5lguo41).
-6. **Ручная установка** — см. видео (в процессе):
-   - Измените шаблон сопроводительного письма (при желании).
+4. **Установите расширение для Chrome** — [Scripty](https://chrome.google.com/webstore/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam);
+5. **Автоматическая установка скрипта** — [установить скрипт](https://scripty.abhisheksatre.com/#/share/script_m80jffs5lguo41);
+6. **Ручная установка** — [см. видеоинструкцию](https://disk.yandex.ru/i/vSoQiv2_ePeTnQ):
+   - Измените шаблон сопроводительного письма (при желании);
    - Добавьте ID резюме в скрипт.
 
 Теперь вы можете использовать несколько шаблонов сопроводительных писем, управлять задержкой и выбирать, с какого резюме отправлять отклики.
