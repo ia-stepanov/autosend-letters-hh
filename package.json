@@ -1,0 +1,19 @@
+{
+  "name": "autosend-letters-hh",
+  "version": "2.0.0",
+  "description": "**AutoSend Letters HeadHunter** — это удобный скрипт, который автоматически отправляет отклики на вакансии на платформе HeadHunter. Цель проекта — упростить процесс поиска работы, сэкономив ваше время и усилия.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Igor Stepanov",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
