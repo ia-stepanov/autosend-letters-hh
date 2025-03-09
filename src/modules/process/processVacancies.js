@@ -16,8 +16,12 @@ export async function processVacancies() {
   if (currentURL.includes(JOB_URLS.vacancyPageHH)) {
     // Отправляем отклик на одну вакансию
     await submitSingleVacancy();
-    // Если в адресе страницы содержится путь списка вакансий
+  // Если в адресе страницы содержится путь списка вакансий
   } else if (currentURL.includes(JOB_URLS.vacancyListHH)) {
+    // Отправляем отклики на несколько вакансий
+    await submitMultipleVacancies();
+  // Если в адресе страницы содержится путь поиска вакансий
+  } else if (currentURL.includes(JOB_URLS.vacancySearchHH)) {
     // Отправляем отклики на несколько вакансий
     await submitMultipleVacancies();
   }

@@ -4,5 +4,8 @@ export const JOB_URLS = {
   vacancyPageHH: 'https://hh.ru/vacancy',
 
   // Ссылка на страницу списка вакансий
-  vacancyListHH: 'https://hh.ru/search/vacancy',
+  vacancyListHH: 'https://hh.ru/vacancies',
+
+  // Ссылка на страницу поиска вакансий
+  vacancySearchHH: 'https://hh.ru/search/vacancy',
 };
