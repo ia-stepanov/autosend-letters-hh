@@ -1,6 +1,6 @@
 {
   "name": "autosend-letters-hh",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "**AutoSend Letters HeadHunter** — это удобный скрипт, который автоматически отправляет отклики на вакансии на платформе HeadHunter. Цель проекта — упростить процесс поиска работы, сэкономив ваше время и усилия.",
   "main": "index.js",
   "scripts": {

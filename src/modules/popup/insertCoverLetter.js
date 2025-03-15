@@ -7,6 +7,9 @@ import { TEMPLATES } from '../../data/data.js';
 // Импортируем функцию для получения названия вакансии
 import { getVacancyName } from './getVacancyName.js';
 
+// Импортируем функцию для программного изменения "textarea"
+import { setTextareaValue } from '../../utils/setTextareaValue.js';
+
 // Импортируем функцию для программного вызова события "change"
 import { dispatchChange } from '../../utils/dispatchChange.js';
 
@@ -21,10 +24,11 @@ export function insertCoverLetter(coverLetter) {
   // Получаем название вакансии
   const vacancyName = getVacancyName();
 
-  // Добавляем в поле готовое письмо, подставив в него название вакансии
-  messageInput.value = TEMPLATES[coverLetter].replace('{#vacancyName}', vacancyName);
+  // Формируем письмо, подставив в него название вакансии
+  const messageValue = TEMPLATES[coverLetter].replace('{#vacancyName}', vacancyName);
 
-  console.log(messageInput);
+  // Добавляем в поле готовое письмо через сеттер
+  setTextareaValue(messageInput, messageValue);
 
   // Вызываем событие "change" для корректной обработки изменений в поле
   dispatchChange(messageInput);

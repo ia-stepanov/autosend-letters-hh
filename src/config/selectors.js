@@ -2,8 +2,7 @@
 export const SELECTORS = {
   // -------------------- Блок для элементов отклика в попапе --------------------
   // Селектор выпадающего списка с резюме в попапе
-  resumeDropdown:
-    '.magritte-cell___NQYg5_4-1-3.magritte-align-center___RjG9e_4-1-3:not([class*="magritte-no-right"])',
+  resumeDropdown: 'path[d="M18 9L12 15L6 9"]',
 
   // Селектор заголовка вакансии в попапе
   vacancyTitlePopap: '[data-qa="title-container"]:has(h2) [data-qa="title-description"]',

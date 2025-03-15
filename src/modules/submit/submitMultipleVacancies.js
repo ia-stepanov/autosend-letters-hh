@@ -17,6 +17,7 @@ export async function submitMultipleVacancies() {
 
   // Проходим по каждой вакансии и отправляем отклик
   for (const vacancy of vacancies) {
+    // Если процесс отправки был остановлен, прекращаем выполнение
     if (!getIsSubmitting()) break;
 
     // Нажимаем кнопку "Откликнуться", открывая форму отклика

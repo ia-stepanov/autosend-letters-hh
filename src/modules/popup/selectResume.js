@@ -10,7 +10,7 @@ import { delay } from '../../utils/delay.js';
 // Функция для выбора резюме и нажатия на кнопку "Добавить сопроводительное"
 export async function selectResume() {
   // Находим выпадающий список с резюме
-  const resumeDropdown = document.querySelector(SELECTORS.resumeDropdown);
+  const resumeDropdown = document.querySelector(SELECTORS.resumeDropdown).closest('div');
 
   // Открываем выпадающий список
   resumeDropdown.click();
