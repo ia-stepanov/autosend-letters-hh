@@ -1,11 +1,12 @@
 // URL-адреса для страниц вакансий
 export const JOB_URLS = {
-  // Ссылка на страницу отдельной вакансии
-  vacancyPageHH: 'https://hh.ru/vacancy',
+  hh: {
+    // Ссылка на страницу отдельной вакансии
+    vacancyPage: 'https://hh.ru/vacancy',
 
-  // Ссылка на страницу списка вакансий
-  vacancyListHH: 'https://hh.ru/vacancies',
+    // Ссылка на страницу списка вакансий
+    vacancyList: ['https://hh.ru/vacancies', 'https://hh.ru/search/vacancy'],
+  },
 
-  // Ссылка на страницу поиска вакансий
-  vacancySearchHH: 'https://hh.ru/search/vacancy',
+  superJob: {},
 };

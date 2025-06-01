@@ -7,35 +7,29 @@ import { SELECTORS } from '../../config/selectors.js';
 // Импортируем функцию задержки выполнения кода
 import { delay } from '../../utils/delay.js';
 
+// Импортируем функцию для выбора резюме
+import { selectResume } from './selectResume.js';
+
 // Импортируем функцию для добавления готового письма в поле ввода
 import { insertCoverLetter } from './insertCoverLetter.js';
 
-// Импортируем функцию для закрытия чата
-import { checkChatikActive } from '../../utils/popupHelpers.js';
-
 // Функция для отправки сопроводительного письма
-export async function submitCoverLetter(vacancyTitle) {
-  // Находим кнопку "Приложить письмо"
-  const addCoverLetter = document.querySelector(SELECTORS.addCoverLetter);
+export async function submitCoverLetterPopup(vacancyTitle) {
+  // Находим кнопку "Откликнуться"
+  const respondBtn = document.querySelector(SELECTORS.respondBtnPopup);
 
-  // Нажимаем на кнопку "Приложить письмо"
-  addCoverLetter.click();
+  // Выбираем резюме
+  await selectResume();
 
   // Ждём заданное время перед вставкой письма
   await delay(CONSTANTS.delayMs);
 
-  // Находим кнопку "Отправить"
-  const sendBtn = document.querySelector(SELECTORS.sendBtn);
-
   // Вставляем сопроводительное письмо
   insertCoverLetter(CONSTANTS.coverLetter, vacancyTitle);
 
-  // Нажимаем кнопку "Отправить"
-  sendBtn.click();
+  // Нажимаем кнопку "Откликнуться"
+  respondBtn.click();
 
   // Ждём, чтобы корректно завершить процесс
   await delay(CONSTANTS.delayMs);
-
-  // Закрываем чат, если открылся
-  checkChatikActive();
 }

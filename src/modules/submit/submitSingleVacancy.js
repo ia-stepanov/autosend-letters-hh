@@ -6,7 +6,7 @@ import { submitCoverLetter } from '../popup/submitCoverLetter.js';
 
 // Функция для отклика на одну вакансию
 export async function submitSingleVacancy() {
-  // Ищем элемент вакансии
+  // Находим элемент вакансии
   const vacancy = document.querySelector(SELECTORS.singleVacancy);
 
   // Если вакансия не найдена, прекращаем выполнение
