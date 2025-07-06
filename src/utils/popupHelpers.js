@@ -8,7 +8,7 @@ import { SELECTORS } from '../config/selectors.js';
 import { delay } from '../utils/delay.js';
 
 //  Функция для подтверждения отклика на вакансию в другой стране
-export function confirmCountry() {
+export async function confirmCountry() {
   // Ищем кнопку по заданному селектору, если она найдена, нажимаем на неё
   document.querySelector(SELECTORS.countryConfirmBtn)?.click();
 }

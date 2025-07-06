@@ -61,7 +61,7 @@ export async function submitMultiVacancies() {
       await delay(CONSTANTS.delayMs);
 
       // Подтверждаем отклик на вакансию в другой стране, если открылся попап
-      confirmCountry();
+      await confirmCountry();
 
       // Подтверждаем отклик на вакансию "Непрямой работодатель", если открылся попап
       await confirmEmployerAlert();

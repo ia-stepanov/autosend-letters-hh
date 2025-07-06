@@ -20,7 +20,7 @@ export const SELECTORS = {
   alertBox: '[data-qa="magritte-alert"]',
 
   // Селектор кнопки подтверждения выбора страны
-  countryConfirmBtn: '.bloko-modal-footer .bloko-button_kind-success',
+  countryConfirmBtn: '[data-qa="relocation-warning-confirm"]',
 
   // Селектор кнопки закрытия чата
   chatikCloseBtn: '[data-qa="chatik-close-chatik"]',
